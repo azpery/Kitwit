@@ -2,7 +2,7 @@
 
 /* Services */
 
-angular.module('Rdel.Services', ['ngResource']).
+angular.module('Kitwit.Services', ['ngResource']).
 factory('WebService', ['$resource', function($resource) {
     return {
         get : function(url){

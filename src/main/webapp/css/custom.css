@@ -33,7 +33,6 @@
 .avatar.big  {
     height: 150px;
     width: 150px;
-    opacity: 0;
     float: none;
     margin: 0 auto;
 }
@@ -55,7 +54,6 @@ img.doge.move {
 
 body {
     overflow-x: hidden;
-    background: #101010;
 }
 
 a.block-center {
@@ -389,4 +387,12 @@ img {
 .logo img:hover {
   -webkit-transform: rotate(180deg) scale(1.1);
           transform: rotate(180deg) scale(1.1);
+}
+
+.has-error {
+    color: #a94442;
+}
+
+.has-success{
+    color: #3c763d;
 }

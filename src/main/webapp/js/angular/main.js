@@ -1,10 +1,10 @@
 /**
  * Robin Delaporte
  */
-var app = angular.module('Rdel', [
+var app = angular.module('Kitwit', [
   'ngRoute',
   'ngAnimate',
-  'Rdel.Services',
+  'Kitwit.Services',
   'ngSanitize'
 ]);
 
@@ -12,7 +12,7 @@ app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Index
     .when("/", {templateUrl: "./partials/home.html", controller: "HomeController"})
-    .when("/projects", {templateUrl: "./partials/portfolio.html", controller: "PortfolioController"})
+    .when("/play", {templateUrl: "./partials/game.html", controller: "GameController"})
     .otherwise({
         redirectTo: '/'
     });

@@ -1,0 +1,38 @@
+[
+	{
+		"tweet" : "Lorem ipsum",
+		"suggestions" : [
+			"Catherine Deneuve",
+			"Donald Trump",
+			"Mickael Vendetta",
+			"Harrison Ford"
+		]
+	},
+	{
+		"tweet" : "blablablablabalbalbalblabalbalbalbalbalbalbalbala",
+		"suggestions" : [
+			"Catherine Deneuve",
+			"Donald Trump",
+			"Mickael Vendetta",
+			"Harrison Ford"
+		]
+	},
+	{
+		"tweet" : "Tralalala",
+		"suggestions" : [
+			"Catherine Deneuve",
+			"Donald Trump",
+			"Mickael Vendetta",
+			"Harrison Ford"
+		]
+	},
+	{
+		"tweet" : "pouet pouet tralala",
+		"suggestions" : [
+			"Catherine Deneuve",
+			"Donald Trump",
+			"Mickael Vendetta",
+			"Harrison Ford"
+		]
+	}
+]
