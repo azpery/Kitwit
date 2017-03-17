@@ -1,22 +1,112 @@
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>Hello App Engine</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
 
-  <body>
-    <h1>Hello App Engine!</h1>
-  
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='/hello'>The servlet</a></td>
-      </tr>
-    </table>
-  </body>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Landing page of Robin Delaporte. Back-end developper and master degree student at Nantes university.">
+    <meta name="Keywords" content="Robin, Delaporte, IT, back-end developper, full stack, developper, Nantes, Internet, Informatique, Computer Science">
+    <meta name="author" content="Robin Delaporte">
+
+    <title>Robin Delaporte - Back end developper</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/vendor/device-mockups/device-mockups.min.css">
+
+    <!-- Theme CSS -->
+    <link href="/css/new-age.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/img/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body id="page-top" ng-app="Rdel">  
+    <div class="page-loader">
+        <img src="ressources/loader.gif">
+    </div>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top"><img src="img/avatar.jpg" class="avatar" id="fixed_avatar"> <img src="img/avatar.jpg" class="avatar absolute" id="movable_avatar"> Robin Delaporte</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a ng-href="#/projects">Projets</a>
+                    </li>
+<!--                     <li>
+                        <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div ng-view>
+        
+    </div>
+    <footer>
+        <div class="container col-xs-12">
+            <p>&copy; 2017 Robin Delaporte. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/angular/main.js"></script>
+    <script src="/js/angular/HomeController.js"></script>
+    <script src="/js/angular/PortfolioController.js"></script>
+    <script src="/js/angular/services.js"></script>
+    <!-- Theme JavaScript -->
+    <script src="/js/new-age.min.js"></script>
+
+    
+
+</body>
+
 </html>
