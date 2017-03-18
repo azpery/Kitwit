@@ -1,0 +1,31 @@
+<section class="no-padding col-md-12 features" id="portfolio">
+    <div class="container-fluid col-xs-offset-3 col-xs-6">
+        <p ng-show="rightAnswer" class="has-success">Well done</p>
+        <p ng-show="wrongAnswer" class="has-error">Wrong answer</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="{{timeLeft}}"
+          aria-valuemin="0" aria-valuemax="100" style="width:{{timeLeft}}%">
+
+            <span class="sr-only">{{timeLeft}}% Complete</span>
+          </div>
+        </div>
+        <div class="row" ng-show="!endGame">
+            <div class="col-xs-12">
+                <h4>Score : {{score}} points {{timeLeft}}</h4>
+                <h3>{{currentTweet.tweet}}</h3>
+                <div class="col-xs-12">
+                        <div ng-repeat="suggestion in currentTweet.suggestions track by $index">
+                            <button ng-click="attempt($index)" class="btn btn-lg btn-primary col-xs-6">
+                                {{suggestion}} 
+                            </button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="endGame">
+            <h2>Your score : {{score}} points</h2>
+            <button ng-click="start()" class="btn btn-lg">Start again</button>
+        </div>
+    </div>
+</section>
+
