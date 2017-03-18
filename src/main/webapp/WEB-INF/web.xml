@@ -4,7 +4,7 @@
          xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
          version="2.5">
-  <servlet>
+   <servlet>
     <servlet-name>HelloAppEngine</servlet-name>
     <servlet-class>HelloAppEngine</servlet-class>
   </servlet>
@@ -45,4 +45,5 @@
     <servlet-name>GameServlet</servlet-name>
     <url-pattern>/game</url-pattern>
   </servlet-mapping>
+  	
 </web-app>

@@ -79,7 +79,7 @@ controller('GameController', ['WebService','$scope', '$interval', function(WebSe
 		currentIndex = -1;
 		$scope.endGame = false;
 		interval;
-		WebService.get("ressources/game.json").$promise.then(function(data) {
+		WebService.get("/game").$promise.then(function(data) {
 			tweets = data;
 			play();
 		});
