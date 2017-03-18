@@ -14,7 +14,12 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class HelloAppEngine extends HttpServlet {
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) 
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
 	  ConfigurationBuilder cb = new ConfigurationBuilder();
 	  cb.setDebugEnabled(true)
@@ -24,20 +29,19 @@ public class HelloAppEngine extends HttpServlet {
 	    .setOAuthAccessTokenSecret("W09ihvscegGTcFKrSBOHU9lqq0jGSHKqJuxib7ZJgVdP2");
 	  TwitterFactory tf = new TwitterFactory(cb.build());
 	  Twitter twitter = tf.getInstance();
-	//twitter.setOAuthConsumer("Lqm5FAXfFRCvDEGm3UeaIwpfs", "iSbYBRRvqfuLXmSPpLLr999dxugyeLinjhoQag8ZjPKyGhp6Le");
+	//twitter.setOAuthConsumer("Lqm5FAXfFRCvDEGm3UeaI	wpfs", "iSbYBRRvqfuLXmSPpLLr999dxugyeLinjhoQag8ZjPKyGhp6Le");
 	Query query = new Query("from:realDonaldTrump");
     QueryResult result;
 	try {
 		result = twitter.search(query);
 	    for (Status status : result.getTweets()) {
-	    	response.getWriter().print("@" + status.getUser().getScreenName() + ":" + status.getText());
+	    	response.getWriter().print("@" + status.getUser().getScreenName() + ":" + status.getText() + "\n");
 	    }
 	} catch (TwitterException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	response.setContentType("text/plain");
-	response.getWriter().print("Hello App Engine!\r\n");
+	
 
   }
 }
