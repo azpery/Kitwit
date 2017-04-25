@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/feed</url>
+    <description>Daily renewal of tweets</description>
+    <schedule>every day 10:15</schedule>
+  </cron>
+</cronentries>

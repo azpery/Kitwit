@@ -18,6 +18,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/zumatec/Documents/twitter4j-4.0.4/lib/twitter4j-core-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rushnak/Documents/tp_web/twitter4j-4.0.5-SNAPSHOT/lib/twitter4j-core-4.0.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rushnak/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rushnak/git/Kitwit/src/main/webapp/WEB-INF/lib/appengine-api-1.0-sdk-1.9.48.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
