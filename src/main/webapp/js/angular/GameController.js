@@ -47,7 +47,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 			$scope.rightAnswer = false;
 			$scope.wrongAnswer = false;
 			$scope.currentTweet = tweets[currentIndex];
-			$(".card").shuffle();
+			setTimeout(function(){$(".card").shuffle();},100)
 			interval = $interval(
 			function(){ 
 				if ($scope.timeLeft == 90) {
@@ -92,19 +92,17 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 	};
 
 	$scope.start = function(){
-			WebService.get("/feed").$promise.then(function(data) {
-				$scope.timeLeft = 0;
-				tweets;
-				$scope.score = 0;
-				currentIndex = -1;
-				$scope.endGame = false;
-				interval;
-				
-			});
+			$scope.timeLeft = 0;
+			tweets;
+			$scope.score = 0;
+			currentIndex = -1;
+			$scope.endGame = false;
+			interval;
 			WebService.get("/game").$promise.then(function(data) {
 				tweets = data;
 				play();
 			});
+			
 		
 	}
 
