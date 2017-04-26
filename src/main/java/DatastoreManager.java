@@ -35,7 +35,7 @@ public class DatastoreManager extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		response.setCharacterEncoding("UTF-8");
 		
-		/*Query quer = new Query("Account");
+		Query quer = new Query("Account");
 		List<Entity> resul = datastore.prepare(quer).asList(FetchOptions.Builder.withDefaults());
 		for (Entity ent : resul){
 			datastore.delete(ent.getKey());
@@ -189,7 +189,7 @@ public class DatastoreManager extends HttpServlet {
 		acc2.setProperty("Printed Name", "George Washington");
 		acc2.setProperty("AccountName", "foundingfather");
 		acc2.setProperty("InActivity", "true");
-		datastore.put(acc2);*/
+		datastore.put(acc2);
 	
 		
 		
