@@ -3,6 +3,6 @@
   <cron>
     <url>/feed</url>
     <description>Daily renewal of tweets</description>
-    <schedule>every day 10:15</schedule>
+    <schedule>every day 12:35</schedule>
   </cron>
 </cronentries>

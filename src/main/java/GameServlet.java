@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.runner.FilterFactoryParams;
-
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -64,6 +62,9 @@ public class GameServlet extends HttpServlet {
 	private void addQuestion(JSONArray game) {
 		
 		int idacc = ThreadLocalRandom.current().nextInt(0, list_account.size());
+		while(list_account.get(idacc).getProperty("InActivity").equals("false")){
+			idacc = ThreadLocalRandom.current().nextInt(0, list_account.size());
+		}
 		int idsugg1 = -1;
 		while (idsugg1 == idacc || idsugg1 == -1){
 			idsugg1 = ThreadLocalRandom.current().nextInt(0, list_account.size());

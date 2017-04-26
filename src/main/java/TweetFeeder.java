@@ -63,7 +63,7 @@ public class TweetFeeder extends HttpServlet {
 		res = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
 
 		for (Entity ent : res){
-			response.getWriter().append("Requesting tweets from twitter!<br />");
+			response.getWriter().append("Requesting tweets from twitter! acc : "+ent.getProperty("AccountName")+"<br />");
 			twitter4j.Query query = new twitter4j.Query("from:"+ent.getProperty("AccountName"));
 			QueryResult result;
 			try {
@@ -83,6 +83,7 @@ public class TweetFeeder extends HttpServlet {
 				Entity tweet = new Entity("Tweet");
 				tweet.setProperty("Author", ent.getProperty("AccountName"));
 				tweet.setProperty("Content", removeUrl(selectedStatus.getText()));*/
+				int count = 0;
 				for (Status status : result.getTweets()) {
 					if (!status.isRetweet()){
 						String text = removeUrl(status.getText());
@@ -92,8 +93,20 @@ public class TweetFeeder extends HttpServlet {
 							tweet.setProperty("Content", text);
 							datastore.put(tweet);
 							response.getWriter().append(text+" : stored !<br />");
+							count ++;
 						}
 					}
+				}
+				if (count > 0){
+					if (ent.getProperty("InActivity").equals("false")){
+						response.getWriter().append("account is now active !<br />");
+						ent.setProperty("InActivity", "true");
+						datastore.put(ent);
+					}
+				}else {
+					response.getWriter().append("account is now inactive !<br />");
+					ent.setProperty("InActivity", "false");
+					datastore.put(ent);
 				}
 
 
