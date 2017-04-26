@@ -25,6 +25,11 @@
         <div class="row" ng-show="endGame">
             <h2>Your score : {{score}} points</h2>
             <button ng-click="start()" class="btn btn-lg">Start again</button>
+            <ul>
+	            <li ng-repeat="t in top.highscore">
+	                {{t.username}} scored {{t.score}} and is in {{t.rank}} position
+	            </li>
+            </ul>
         </div>
     </div>
 </section>

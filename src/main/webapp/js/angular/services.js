@@ -12,12 +12,9 @@ factory('WebService', ['$resource', function($resource) {
         }
     }
 }]).
-factory('ActeurService', ['$resource', function($resource) {
-    return {
-        get : function(url){
-            return $resource(url,{},{
-             query: {method: "GET", isArray:false}
-            }).query();
-        }
-    }
+factory('PostService', ['$resource',  function($resource){
+	  var resource = $resource('./score', {}, {
+	      post: { method: 'POST' }
+	  });
+	   return resource;
 }]);

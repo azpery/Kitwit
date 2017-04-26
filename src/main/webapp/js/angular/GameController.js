@@ -3,7 +3,7 @@
 /* SidebarController */
 
 angular.module('Kitwit').
-controller('GameController', ['WebService','$scope', '$interval', function(WebService, $scope, $interval) {
+controller('GameController', ['WebService','$scope', '$interval', '$rootScope','PostService', function(WebService, $scope, $interval, $rootScope, PostService) {
 	$scope.timeLeft = 0; 
 	var tweets;
 	$scope.score = 0;
@@ -11,13 +11,27 @@ controller('GameController', ['WebService','$scope', '$interval', function(WebSe
 	$scope.endGame = false;
 	var interval;
 	$scope.pause = false;
-
+	
 	var endGame = function(){
 		console.log("game ended")
 		$scope.endGame = true;
 		$scope.rightAnswer = false;
 		$scope.wrongAnswer = false;
 		$scope.pause = true;
+		var params = {
+		        username: $rootScope.name,
+		        mail: $rootScope.email,
+		        result: $scope.score
+		      }
+		PostService.post(
+	    params,
+	    function(data) {
+	      $scope.top = data
+	    },
+	    function(err) {
+	      console.log(err);
+	      $scope.error = err.status;
+	    });
 	};
 
 	var play = function(){

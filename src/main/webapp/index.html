@@ -29,6 +29,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <meta name="google-signin-client_id" content="341857555231-d8jqonoren5qjrsb5gkbro8jh7qghvmh.apps.googleusercontent.com">
+    
 
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -72,6 +74,10 @@
                     <li>
                         <a ng-href="#/play">Let's play</a>
                     </li>
+                    <li class="g-signin2" data-onsuccess="onSignIn">
+                    
+                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -105,6 +111,8 @@
     <script src="/js/angular/services.js"></script>
     <!-- Theme JavaScript -->
     <script src="/js/new-age.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
 
     
 
