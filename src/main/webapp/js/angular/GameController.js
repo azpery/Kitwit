@@ -13,25 +13,29 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 	$scope.pause = false;
 	
 	var endGame = function(){
-		console.log("game ended")
-		$scope.endGame = true;
-		$scope.rightAnswer = false;
-		$scope.wrongAnswer = false;
-		$scope.pause = true;
-		var params = {
-		        username: $rootScope.name,
-		        mail: $rootScope.email,
-		        result: $scope.score
-		      }
-		PostService.post(
-	    params,
-	    function(data) {
-	      $scope.top = data
-	    },
-	    function(err) {
-	      console.log(err);
-	      $scope.error = err.status;
-	    });
+		if(!$scope.endGame){
+			console.log("game ended")
+			
+			$scope.endGame = true;
+			$scope.rightAnswer = false;
+			$scope.wrongAnswer = false;
+			$scope.pause = true;
+			$interval.cancel(interval);
+			var params = {
+			        username: $rootScope.name,
+			        mail: $rootScope.email,
+			        result: $scope.score
+			      }
+			PostService.post(
+		    params,
+		    function(data) {
+		      $scope.top = data
+		    },
+		    function(err) {
+		      console.log(err);
+		      $scope.error = err.status;
+		    });
+		}
 	};
 
 	var play = function(){
@@ -43,6 +47,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 			$scope.rightAnswer = false;
 			$scope.wrongAnswer = false;
 			$scope.currentTweet = tweets[currentIndex];
+			$(".card").shuffle();
 			interval = $interval(
 			function(){ 
 				if ($scope.timeLeft == 90) {
@@ -87,16 +92,20 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 	};
 
 	$scope.start = function(){
-		$scope.timeLeft = 0;
-		tweets;
-		$scope.score = 0;
-		currentIndex = -1;
-		$scope.endGame = false;
-		interval;
-		WebService.get("/game").$promise.then(function(data) {
-			tweets = data;
-			play();
-		});
+			WebService.get("/feed").$promise.then(function(data) {
+				$scope.timeLeft = 0;
+				tweets;
+				$scope.score = 0;
+				currentIndex = -1;
+				$scope.endGame = false;
+				interval;
+				
+			});
+			WebService.get("/game").$promise.then(function(data) {
+				tweets = data;
+				play();
+			});
+		
 	}
 
 	$scope.start();

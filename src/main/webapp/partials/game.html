@@ -14,7 +14,7 @@
                 <h4>Score : {{score}} points {{timeLeft}}</h4>
                 <h3>{{currentTweet.tweet}}</h3>
                 <div class="col-xs-12">
-                        <div ng-repeat="suggestion in currentTweet.suggestions track by $index">
+                        <div class-"card" ng-repeat="suggestion in currentTweet.suggestions track by $index">
                             <button ng-click="attempt($index)" class="btn btn-lg btn-primary col-xs-6">
                                 {{suggestion}} 
                             </button>
