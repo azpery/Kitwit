@@ -11,7 +11,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 	$scope.endGame = false;
 	var interval;
 	$scope.pause = false;
-	
+
 	var endGame = function(){
 		console.log("game ended")
 		$scope.endGame = true;
@@ -19,19 +19,19 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 		$scope.wrongAnswer = false;
 		$scope.pause = true;
 		var params = {
-		        username: $rootScope.name,
-		        mail: $rootScope.email,
-		        result: $scope.score
-		      }
+				username: $rootScope.name,
+				mail: $rootScope.email,
+				result: $scope.score
+		}
 		PostService.post(
-	    params,
-	    function(data) {
-	      $scope.top = data
-	    },
-	    function(err) {
-	      console.log(err);
-	      $scope.error = err.status;
-	    });
+				params,
+				function(data) {
+					$scope.top = data
+				},
+				function(err) {
+					console.log(err);
+					$scope.error = err.status;
+				});
 	};
 
 	var play = function(){
@@ -44,27 +44,29 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 			$scope.wrongAnswer = false;
 			$scope.currentTweet = tweets[currentIndex];
 			interval = $interval(
-			function(){ 
-				if ($scope.timeLeft == 90) {
-					play();
-				}else{				
-					$scope.timeLeft += 10 ;
-					console.log("time left : "+ $scope.timeLeft );
-				}
-			}, 
-			1000);
+					function(){ 
+						if ($scope.timeLeft == 90) {
+							play();
+						}else{				
+							$scope.timeLeft += 10 ;
+							console.log("time left : "+ $scope.timeLeft );
+						}
+					}, 
+					1000);
 		}else{
 			interval = $interval(
-			function(){ 
-				$scope.timeLeft = 100;
-				$interval.cancel(interval);
-				play();
-			}, 
-			100);
-			endGame();
+					function(){ 
+						$scope.timeLeft = 100;
+						$interval.cancel(interval);
+						play();
+					}, 
+					100);
+			if ($scope.endGame == false){
+				endGame();
+			}
 		}
-		
-		
+
+
 	};
 
 	$scope.attempt = function(index){

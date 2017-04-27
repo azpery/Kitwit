@@ -1,0 +1,8 @@
+indexes:
+- kind: Score
+  properties:
+  - name: mail
+    direction: asc
+  - name: score
+    direction: desc
+   

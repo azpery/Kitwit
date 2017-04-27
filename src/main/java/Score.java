@@ -2,7 +2,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -49,8 +51,14 @@ public class Score extends HttpServlet {
 		response.setContentType("application/json");    
 		PrintWriter out = response.getWriter();
 		
+		Entity newScore = new Entity("Score");
+		newScore.setProperty("username", request.getParameter("username"));
+		newScore.setProperty("mail", request.getParameter("mail"));
+		newScore.setProperty("score", request.getParameter("result"));
+		datastore.put(newScore);
+		
 		Query q = new Query("Score");
-		q.addSort("Score", SortDirection.DESCENDING);
+		q.addSort("score", SortDirection.DESCENDING);
 		List<Entity> list_score = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(3));
 		JSONArray scores = new JSONArray();
 		try {
@@ -66,11 +74,12 @@ public class Score extends HttpServlet {
 					found = true;
 				}
 				i++;
+				logger.log(Level.SEVERE, "adding score to return");
 				scores.put(score);
 			}
 			if (!found){
-				Filter mailFilter = new FilterPredicate("Mail", FilterOperator.EQUAL, request.getParameter("mail"));
-				q = new Query("Score").setFilter(mailFilter).addSort("Score", SortDirection.DESCENDING);
+				Filter mailFilter = new FilterPredicate("mail", FilterOperator.EQUAL, request.getParameter("mail"));
+				q = new Query("Score").setFilter(mailFilter).addSort("score", SortDirection.DESCENDING);
 				Entity ent = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(1)).get(0);
 				JSONObject score = new JSONObject();
 				score.put("mail", ent.getProperty("mail"));
@@ -94,11 +103,7 @@ public class Score extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Entity score = new Entity("Score");
-		score.setProperty("username", request.getParameter("username"));
-		score.setProperty("mail", request.getParameter("mail"));
-		score.setProperty("score", request.getParameter("result"));
-		datastore.put(score);
+		
 		
 		doGet(request, response);
 

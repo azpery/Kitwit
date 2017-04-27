@@ -14,7 +14,7 @@ factory('WebService', ['$resource', function($resource) {
 }]).
 factory('PostService', ['$resource',  function($resource){
 	  var resource = $resource('./score', {}, {
-	      post: { method: 'POST' }
+	      post: { method: 'GET' }
 	  });
 	   return resource;
 }]);
