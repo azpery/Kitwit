@@ -49,7 +49,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 			$scope.wrongAnswer = false;
 			$scope.currentTweet = tweets[currentIndex];
 			
-			$scope.answer = $scope.currentTweet.suggestions[0].answer;
+			$scope.answer = $scope.currentTweet.suggestions[0];
 			$scope.currentTweet.suggestions = shuffle($scope.currentTweet.suggestions);
 			interval = $interval(
 			function(){ 
@@ -80,7 +80,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 		if (!$scope.pause) {
 			$scope.pause = true;
 			$interval.cancel(interval);
-			if ($scope.currentTweet.suggestions[index].answer == $scope.answer) {
+			if ($scope.currentTweet.suggestions[index] == $scope.answer) {
 				$scope.rightAnswer = true;
 				$scope.wrongAnswer = false;
 				$scope.score += (100-$scope.timeLeft);
