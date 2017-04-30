@@ -6,7 +6,7 @@ angular.module('Kitwit').
 controller('GameController', ['WebService','$scope', '$interval', '$rootScope','PostService', function(WebService, $scope, $interval, $rootScope, PostService) {
 	$scope.timeLeft = 0; 
 	var tweets;
-	var answer 
+	$scope.answer;
 	$scope.score = 0;
 	var currentIndex = -1;
 	$scope.endGame = false;
@@ -49,7 +49,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 			$scope.wrongAnswer = false;
 			$scope.currentTweet = tweets[currentIndex];
 			
-			answer = $scope.currentTweet.suggestions[0].answer;
+			$scope.answer = $scope.currentTweet.suggestions[0].answer;
 			$scope.currentTweet.suggestions = shuffle($scope.currentTweet.suggestions);
 			interval = $interval(
 			function(){ 
@@ -80,7 +80,7 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 		if (!$scope.pause) {
 			$scope.pause = true;
 			$interval.cancel(interval);
-			if ($scope.currentTweet.suggestions[index].answer == answer) {
+			if ($scope.currentTweet.suggestions[index].answer == $scope.answer) {
 				$scope.rightAnswer = true;
 				$scope.wrongAnswer = false;
 				$scope.score += (100-$scope.timeLeft);
