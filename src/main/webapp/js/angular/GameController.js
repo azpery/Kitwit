@@ -12,9 +12,6 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 	$scope.endGame = false;
 	var interval;
 	$scope.pause = false;
-	if( $rootScope.name == undefined){
-		alert("Please log in with your google account if you want to appear in highscores");
-	}
 	
 	var endGame = function(){
 		if(!$scope.endGame){
@@ -56,18 +53,18 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 			$scope.currentTweet.suggestions = shuffle($scope.currentTweet.suggestions);
 			interval = $interval(
 			function(){ 
-				if ($scope.timeLeft == 90) {
+				if ($scope.timeLeft == 99) {
 					play();
 				}else{				
-					$scope.timeLeft += 10 ;
+					$scope.timeLeft += 1 ;
 					console.log("time left : "+ $scope.timeLeft );
 				}
 			}, 
-			1000);
+			100);
 		}else{
 			interval = $interval(
 			function(){ 
-				$scope.timeLeft = 100;
+				$scope.timeLeft = 0;
 				$interval.cancel(interval);
 				play();
 			}, 
