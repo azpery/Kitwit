@@ -1,7 +1,7 @@
 <section class="no-padding col-md-12 features" id="portfolio">
     <div class="container-fluid col-xs-offset-3 col-xs-6">
         <p ng-show="rightAnswer" class="has-success">Well done</p>
-        <p ng-show="wrongAnswer" class="has-error">Wrong answer</p>
+        <p ng-show="wrongAnswer" class="has-error">Wrong answer it's {{answer}}</p>
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="{{timeLeft}}"
           aria-valuemin="0" aria-valuemax="100" style="width:{{timeLeft}}%">
@@ -11,7 +11,7 @@
         </div>
         <div class="row" ng-show="!endGame">
             <div class="col-xs-12">
-                <h4>Score : {{score}} points {{timeLeft}}</h4>
+                <h4>Score : {{score}} points</h4>
                 <h3>{{currentTweet.tweet}}</h3>
                 <div class="col-xs-12">
                         <div class-"card" ng-repeat="suggestion in currentTweet.suggestions track by $index">
