@@ -12,6 +12,9 @@ controller('GameController', ['WebService','$scope', '$interval', '$rootScope','
 	$scope.endGame = false;
 	var interval;
 	$scope.pause = false;
+	if( $rootScope.name == undefined){
+		alert("Please log in with your google account if you want to appear in highscores");
+	}
 	
 	var endGame = function(){
 		if(!$scope.endGame){
