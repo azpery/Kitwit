@@ -35,7 +35,7 @@ public class DatastoreManager extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		response.setCharacterEncoding("UTF-8");
 		
-		/*Query quer = new Query("Account");
+		/*Query quer = new Query("Score");
 		List<Entity> resul = datastore.prepare(quer).asList(FetchOptions.Builder.withDefaults());
 		for (Entity ent : resul){
 			datastore.delete(ent.getKey());

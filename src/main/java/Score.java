@@ -110,6 +110,7 @@ public class Score extends HttpServlet {
 					score.put("rank", i);
 					score.put("username", ent.getProperty("username"));
 					score.put("score", ent.getProperty("score"));
+					i++;
 					scores.put(score);
 				}
 				
