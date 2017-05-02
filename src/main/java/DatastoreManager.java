@@ -13,6 +13,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.repackaged.com.google.datastore.v1.CompositeFilter.Operator;
 /**
  * Servlet implementation class DatastoreManager
  */
@@ -194,6 +196,7 @@ public class DatastoreManager extends HttpServlet {
 		
 		
 		Query q = new Query("Score");
+		q.addSort("score", SortDirection.DESCENDING);
 		List<Entity> res = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
 		
 		if(res == null){

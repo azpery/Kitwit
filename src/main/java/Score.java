@@ -50,77 +50,41 @@ public class Score extends HttpServlet {
 
 		response.setContentType("application/json");    
 		PrintWriter out = response.getWriter();
-		JSONArray scores = new JSONArray();
+		
 
 		if (request.getParameter("username") != null && request.getParameter("mail") != null){
 
 			Entity newScore = new Entity("Score");
 			newScore.setProperty("username", request.getParameter("username"));
 			newScore.setProperty("mail", request.getParameter("mail"));
-			newScore.setProperty("score", request.getParameter("result"));
+			newScore.setProperty("score", Integer.parseInt(request.getParameter("result")));
 			datastore.put(newScore);
 
-			Query q = new Query("Score");
-			q.addSort("score", SortDirection.DESCENDING);
-			List<Entity> list_score = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(3));
-			
-			try {
-				boolean found = false;
-				int i = 1;
-				for (Entity ent : list_score){
-					JSONObject score = new JSONObject();
-					score.put("mail", ent.getProperty("mail"));
-					score.put("rank", i);
-					score.put("username", ent.getProperty("username"));
-					score.put("score", ent.getProperty("score"));
-					if (ent.getProperty("mail").equals(request.getParameter("mail"))){
-						found = true;
-					}
-					i++;
-					logger.log(Level.SEVERE, "adding score to return");
-					scores.put(score);
-				}
-				if (!found){
-					Filter mailFilter = new FilterPredicate("mail", FilterOperator.EQUAL, request.getParameter("mail"));
-					q = new Query("Score").setFilter(mailFilter).addSort("score", SortDirection.DESCENDING);
-					Entity ent = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(1)).get(0);
-					JSONObject score = new JSONObject();
-					score.put("mail", ent.getProperty("mail"));
-					score.put("rank", i);
-					score.put("username", ent.getProperty("username"));
-					score.put("score", ent.getProperty("score"));
-					scores.put(score);
-				}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		}
+
+		JSONArray scores = new JSONArray();
+		Query q = new Query("Score");
+		q.addSort("score", SortDirection.DESCENDING);
+		List<Entity> list_score = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(3));
+		try {
+			int i = 1;
+			for (Entity ent : list_score){
+				JSONObject score = new JSONObject();
+				score.put("mail", ent.getProperty("mail"));
+				score.put("rank", i);
+				score.put("username", ent.getProperty("username"));
+				score.put("score", ent.getProperty("score"));
+				i++;
+				scores.put(score);
 			}
 
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 
-		} else {
-			Query q = new Query("Score");
-			q.addSort("score", SortDirection.DESCENDING);
-			List<Entity> list_score = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(3));
-			try {
-				boolean found = false;
-				int i = 1;
-				for (Entity ent : list_score){
-					JSONObject score = new JSONObject();
-					score.put("mail", ent.getProperty("mail"));
-					score.put("rank", i);
-					score.put("username", ent.getProperty("username"));
-					score.put("score", ent.getProperty("score"));
-					i++;
-					scores.put(score);
-				}
-				
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
 		}
-		
+
 		out.print(scores);
 		out.flush();
 
